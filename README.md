@@ -218,8 +218,112 @@ Multiple versions of GCC can be installed and used on Ubuntu. The `update-altern
     Here, we have provided `gcc` as the master and `g++` as the slave. Multiple slaves can be appended along with the master. When the master symbolic link is changed, the slaves will be changed too.
 
 - Switch to 4.9:
-    Now you can switch between gcc versions by using:
+
+Now you can switch between gcc versions by using:
     ```
     $ sudo update-alternatives --config gcc
     ```
+
+## Clone the TensorFlow repository
+
+- To clone the latest TensorFlow repository, issue the following command:
+    ```
+    $ git clone https://github.com/tensorflow/tensorflow
+    ```
+-After cloning, you may optionally build a specific branch (such as a release branch) by invoking the following commands:
+    ◦ `$ cd tensorflow`
+    ◦ `$ git checkout Branch` where Branch is the desired branch
+    ◦ For example, to work with the r1.8
+    ◦ `$ git checkout r1.8`
+
+## Configure the installation
+- Run `$ ./configure`
+- Use the exact responses as shown below in Bold:
+    ```
+    Please specify the location of python. [Default is /home/dnn/anaconda3/bin/python]:
+ no input just press enter
+
+ Found possible Python library paths:
+   /home/dnn/anaconda3/lib/python3.6/site-packages
+ Please input the desired Python library path to use.  Default is [/home/dnn/anaconda3/lib/python3.6/site-packages]
+ no input just press enter
+
+ Do you wish to build TensorFlow with jemalloc as malloc support? [Y/n]: y
+ jemalloc as malloc support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with Google Cloud Platform support? [Y/n]: n
+ No Google Cloud Platform support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with Hadoop File System support? [Y/n]: n
+ No Hadoop File System support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with Amazon S3 File System support? [Y/n]: n
+ No Amazon S3 File System support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with Apache Kafka Platform support? [Y/n]: n
+ No Apache Kafka Platform support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with XLA JIT support? [y/N]: n
+ No XLA JIT support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with GDR support? [y/N]: n
+ No GDR support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with VERBS support? [y/N]: n
+ No VERBS support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with OpenCL SYCL support? [y/N]: n
+ No OpenCL SYCL support will be enabled for TensorFlow.
+
+ Do you wish to build TensorFlow with CUDA support? [y/N]: y
+ CUDA support will be enabled for TensorFlow.
+
+ Please specify the CUDA SDK version you want to use, e.g. 7.0. [Leave empty to default to CUDA 9.0]: 9.1
+
+
+ Please specify the location where CUDA 9.1 toolkit is installed. Refer to README.md for more details. [Default is /usr/local/cuda]:
+ no input just press enter
+
+
+ Please specify the cuDNN version you want to use. [Leave empty to default to cuDNN 7.0]: 7.1.3
+
+
+ Please specify the location where cuDNN 7 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]:
+no input just press enter
+
+
+ Do you wish to build TensorFlow with TensorRT support? [y/N]: n
+ No TensorRT support will be enabled for TensorFlow.
+
+ Please specify the NCCL version you want to use. [Leave empty to default to NCCL 1.3]:
+ no input just press enter
+
+ Please specify a list of comma-separated Cuda compute capabilities you want to build with.
+ You can find the compute capability of your device at: https://developer.nvidia.com/cuda-gpus.
+ Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 6.1] 3.0
+
+
+ Do you want to use clang as CUDA compiler? [y/N]: n
+ nvcc will be used as CUDA compiler.
+
+ Please specify which gcc should be used by nvcc as the host compiler. [Default is /usr/bin/gcc]:
+ no input just press enter
+
+ Do you wish to build TensorFlow with MPI support? [y/N]: n
+ No MPI support will be enabled for TensorFlow.
+
+ Please specify optimization flags to use during compilation when bazel option "--config=opt" is specified [Default is -march=native]:
+ no input just press enter
+
+ Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]: n
+ Not configuring the WORKSPACE for Android builds.
+
+ Preconfigured Bazel build configs. You can use any of the below by adding "--config=<>" to your build command. See tools/bazel.rc for more details.
+ 	--config=mkl         	# Build with MKL support.
+ 	--config=monolithic  	# Config for mostly static monolithic build.
+ Configuration finished
+    ```
+
+
+
 
