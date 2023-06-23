@@ -39,7 +39,7 @@ sudo apt-get upgrade bazel
 
 ## Install TensorFlow dependencies
 
-### To install TensorFlow, you must install the following packages:
+#### Install necessary packages:
    - numpy, which is a numerical processing package that TensorFlow requires.
    - dev, which enables adding extensions to Python.
    - pip, which enables you to install and manage certain Python packages.
@@ -55,7 +55,7 @@ To install these packages for Python 3.n, issue the following command:
      sudo apt-get install python3-numpy python3-dev python3-pip python3-wheel
 ```
 
-### Installing mock package:
+#### Installing mock package:
 ```sh
    pip install -U mock
 ```
