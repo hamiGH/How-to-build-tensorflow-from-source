@@ -45,17 +45,100 @@ sudo apt-get upgrade bazel
    - pip, which enables you to install and manage certain Python packages.
    - wheel, which enables you to manage Python compressed packages in the wheel (.whl) format.
 
-To install these packages for Python 2.7, issue the following command:
+To install these packages for Python 2.7, execute the following command:
 ```sh
      sudo apt-get install python-numpy python-dev python-pip python-wheel
 ```
 
-To install these packages for Python 3.n, issue the following command:
+To install these packages for Python 3.n, execute the following command:
 ```sh
      sudo apt-get install python3-numpy python3-dev python3-pip python3-wheel
 ```
 
-#### Installing mock package:
+#### Install mock package:
 ```sh
    pip install -U mock
 ```
+
+#### Installing CUDA Toolkit by Runfile
+Link: [installing cuda toolkit & problem-installing-nvidia-390-42-driver-on-ubuntu-16-04](https://developer.nvidia.com/cuda-zone)
+
+- Download runfile cuda toolkit:
+  - Download link: [https://developer.nvidia.com/cuda-zone](https://developer.nvidia.com/cuda-zone)
+
+- Disable the Nouveau drivers: To install the Display Driver, the Nouveau drivers must first be disabled.
+  - The Nouveau drivers are loaded if the following command prints anything:
+    ```
+    $ lsmod | grep nouveau
+    ```
+  - Create a file at `/etc/modprobe.d/blacklist-nouveau.conf` with the following contents:
+    ```
+    blacklist nouveau
+    options nouveau modeset=0
+    ```
+  - Regenerate the kernel initramfs:
+    ```
+    $ sudo update-initramfs -u
+    ```
+  - Reboot is required to completely unload the Nouveau drivers and prevent the graphical interface from loading.
+
+- Reboot into text mode (runlevel 3):
+  - Press `ctrl+alt+f1`
+  - Run the following command:
+    ```
+    $ sudo init 3
+    ```
+
+- Stop your graphic service (the X-server):
+  - Run the following command:
+    ```
+    $ sudo service lightdm stop
+    ```
+
+- Run the installer: The Runfile installation installs the NVIDIA Driver, CUDA Toolkit, and CUDA Samples. But this removes 390.xx driver and replaces it with 387.xx. So just install the toolkit.
+  - Run the following commands:
+    ```
+    $ chmod +x cuda_<version>_linux.run
+    $ sudo sh cuda_<version>_linux.run –toolkit –silent
+    ```
+  - Go to the next step for installing the CUDA driver.
+
+#### Installing CUDA driver:
+- Online installing:
+  - Run the following commands:
+    ```
+    $ sudo add-apt-repository ppa:graphics-drivers/ppa
+    $ sudo apt update
+    $ sudo apt install nvidia-390
+    $ reboot
+    ```
+
+#### Installing cuDNN SDK (from a tar file)
+Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
+
+- Download cuDNN tar file: [https://developer.nvidia.com/cudnn](https://developer.nvidia.com/cudnn)
+- Unzip the cuDNN package:
+  - Run the following command:
+    ```
+    $ tar -xzvf cudnn-9.1-linux-x64-v7.1.tgz
+    ```
+- Copy the following files into the CUDA Toolkit directory:
+  - Run the following commands:
+    ```
+    $ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+    $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+    ```
+  - Instead of this, it's better to use these commands:
+     ```
+       $ sudo cp cuda/lib64/libcudnn.so.7.1.3 /usr/local/cuda/lib64
+       $ sudo cp cuda/lib64/libcudnn_static.a /usr/local/cuda/lib64
+       $ sudo ln -s /usr/local/cuda/lib64/libcudnn.so.7.1.3 /usr/local/cuda/lib64/libcudnn.so.7
+       $ sudo ln -s /usr/local/cuda/lib64/libcudnn.so.7.1.3 /usr/local/cuda/lib64/libcudnn.so
+     ```
+
+- Change permissions for the copied files:
+  - Run the following command:
+    ```
+    $ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+    ```
+
