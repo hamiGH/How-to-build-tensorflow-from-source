@@ -128,7 +128,7 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
     $ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
     $ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
     ```
-  - Instead of this, it's better to use these commands:
+  - Rather than using the commands mentioned above, it is recommended to use these commands instead:
      ```
        $ sudo cp cuda/lib64/libcudnn.so.7.1.3 /usr/local/cuda/lib64
        $ sudo cp cuda/lib64/libcudnn_static.a /usr/local/cuda/lib64
@@ -136,9 +136,19 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
        $ sudo ln -s /usr/local/cuda/lib64/libcudnn.so.7.1.3 /usr/local/cuda/lib64/libcudnn.so
      ```
 
-- Change permissions for the copied files:
+- Modify the permissions for the copied files:
   - Run the following command:
     ```
     $ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
     ```
 
+#### Configure CUDA
+- Add the CUDA Toolkit to $PATH
+    - Open `~/.bashrc` in your favorite editor
+        - `$ gedit ~/.bashrc`
+    - Add these three export statements to the end of `~/.bashrc`
+        ```
+            export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+            export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+            export CUDA_HOME=/usr/local/cuda
+        ```
