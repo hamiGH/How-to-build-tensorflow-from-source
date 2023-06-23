@@ -163,3 +163,26 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
     - `$ nvcc –version`
     - `$ nvidia-smi`
     - `$ nvidia-smi -l  1`
+
+#### Install additional Nvidia libraries (NCCL)
+The NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective communication primitives that are performance optimized for NVIDIA GPUs. NCCL provides routines such as all-gather, all-reduce, broadcast, reduce, reduce-scatter, that are optimized to achieve high bandwidth over PCIe and NVLink high-speed interconnect.
+
+- Download NCCL package from NVIDIA website
+    - link → https://developer.nvidia.com/nccl
+- Extract the tar file
+    - For NCCL 2.1.15 and CUDA 9.1, the tar file name is nccl_2.1.15-1+cuda9.1_x86_64.txz
+    - `$ tar -xvf nccl_2.1.15-1+cuda9.1_x86_64.txz`
+- To install NCCL, should do the following commands
+    ```
+    $ sudo mkdir -p /usr/local/cuda/nccl/lib /usr/local/cuda/nccl/include
+    $ cd ~/Downloads/nccl_2.1.15-1+cuda9.1_x86_64/
+    $ sudo cp *.txt /usr/local/cuda/nccl
+    $ sudo cp include/*.h /usr/include/
+    $ sudo cp lib/libnccl.so.2.1.15 lib/libnccl_static.a /usr/lib/x86_64-linux-gnu/
+    $ sudo ln -s /usr/include/nccl.h /usr/local/cuda/nccl/include/nccl.h
+    $ cd /usr/lib/x86_64-linux-gnu
+    $ sudo ln -s libnccl.so.2.1.15 libnccl.so.2
+    $ sudo ln -s libnccl.so.2 libnccl.so
+    $ for i in libnccl*; do sudo ln -s /usr/lib/x86_64-linux-gnu/$i /usr/local/cuda/nccl/lib/$i; done
+    ```
+- Add these two export statements to the end of `~/.bashrc` :
