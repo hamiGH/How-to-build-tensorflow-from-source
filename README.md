@@ -241,12 +241,12 @@ Now you can switch between gcc versions by using:
 - Use the exact responses as shown below in Bold:
     ```
     Please specify the location of python. [Default is /home/dnn/anaconda3/bin/python]:
- no input just press enter
+    **no input just press enter**
 
- Found possible Python library paths:
-   /home/dnn/anaconda3/lib/python3.6/site-packages
- Please input the desired Python library path to use.  Default is [/home/dnn/anaconda3/lib/python3.6/site-packages]
- no input just press enter
+    Found possible Python library paths:
+       /home/dnn/anaconda3/lib/python3.6/site-packages
+    Please input the desired Python library path to use.  Default is [/home/dnn/anaconda3/lib/python3.6/site-packages]
+    **no input just press enter**
 
  Do you wish to build TensorFlow with jemalloc as malloc support? [Y/n]: y
  jemalloc as malloc support will be enabled for TensorFlow.
