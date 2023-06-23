@@ -7,7 +7,7 @@
     - [Install necessary packages](#install-necessary-packages)
     - [Install mock packages](#install-mock-packages)
     - [Install CUDA Toolkit by Runfile](#Install-cuda-toolkit)
-    - [Install CUDA driver](#Install-cuda-driver)i
+    - [Install CUDA driver](#Install-cuda-driver)
     - [Install cuDNN SDK](#nstall-cudnn-sdk)
     - [Configure Cuda](#configure-cuda)
     - [Test CUDA Toolkit and cuDNN](#test-cuda-cudnn)
