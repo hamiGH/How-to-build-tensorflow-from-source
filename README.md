@@ -152,3 +152,5 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
             export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
             export CUDA_HOME=/usr/local/cuda
         ```
+    - Reload the ~/.bashrc file:
+        - `$ source ~/.bashrc`
