@@ -1,6 +1,17 @@
 # How to build tensorflow from source
 
-## Setup information
+## Table of Contents
+- [Setup information](#setup-information)
+- [Install Bazel](#install-bazel)
+- [Usage](#usage)
+  - [Basic Usage](#basic-usage)
+  - [Advanced Usage](#advanced-usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+
+
+## Setup information <a name="setup-information"></a>
 - OS Platform and Distribution (e.g., Linux Ubuntu 16.04): Ubuntu 16.04
 - TensorFlow version: r1.8
 - Python version: 3.6.4
@@ -11,7 +22,7 @@
 - NVIDIA Driver Version: recommended 390.77
 - NCCL version: 2.1.15
 
-## Install Bazel
+## Install Bazel <a name="install-bazel"></a>
 Find bazel version according to tensorflow version → [link for bazel version](link)
 
 Link → Using Bazel custom APT repository
