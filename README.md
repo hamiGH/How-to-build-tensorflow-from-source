@@ -148,9 +148,9 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
         - `$ gedit ~/.bashrc`
     - Add these three export statements to the end of `~/.bashrc`
         ```
-            export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
-            export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-            export CUDA_HOME=/usr/local/cuda
+        export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+        export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+        export CUDA_HOME=/usr/local/cuda
         ```
     - Reload the ~/.bashrc file:
         - `$ source ~/.bashrc`
@@ -186,3 +186,40 @@ The NVIDIA Collective Communications Library (NCCL) implements multi-GPU and mul
     $ for i in libnccl*; do sudo ln -s /usr/lib/x86_64-linux-gnu/$i /usr/local/cuda/nccl/lib/$i; done
     ```
 - Add these two export statements to the end of `~/.bashrc` :
+    ```
+    $ export TF_NCCL_VERSION='2.1.15'
+    $ export NCCL_INSTALL_PATH=/usr/local/cuda/nccl
+    ```
+- Reload the `~/.bashrc` file:
+    ```
+    $ source ~/.bashrc
+    ```
+
+## Switch to gcc 4.9
+Link: [how to switch gcc version using update-alternatives](https://example.com)
+
+Multiple versions of GCC can be installed and used on Ubuntu. The `update-alternatives` tool makes it easy to switch between multiple versions of GCC.
+
+- Check for the version of gcc (We need to install version less than 5.0):
+    ```
+    $ gcc --version
+    ```
+
+- Install gcc 4.9/g++ 4.9:
+    If the version is above 4.9, downgrade the existing version from 5.3 to 4.9:
+    ```
+    $ sudo apt-get install gcc-4.9 g++-4.9
+    ```
+
+- Pass `update-alternatives` these symbolic links:
+    ```
+    $ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
+    ```
+    Here, we have provided `gcc` as the master and `g++` as the slave. Multiple slaves can be appended along with the master. When the master symbolic link is changed, the slaves will be changed too.
+
+- Switch to 4.9:
+    Now you can switch between gcc versions by using:
+    ```
+    $ sudo update-alternatives --config gcc
+    ```
+
