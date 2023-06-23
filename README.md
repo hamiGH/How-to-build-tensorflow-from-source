@@ -3,9 +3,9 @@
 ## Table of Contents
 - [Setup information](#setup-information)
 - [Install Bazel](#install-bazel)
-- [Usage](#usage)
-  - [Basic Usage](#basic-usage)
-  - [Advanced Usage](#advanced-usage)
+- [Install TensorFlow dependencies](#install-tf-dependencies)
+  - [Install necessary packages](#install-necessary-packages)
+  - [Install mock packages](#install-mock-packages)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -48,9 +48,9 @@ once installed, you can upgrade to a newer version of Bazel with the following c
 sudo apt-get upgrade bazel
 ```
 
-## Install TensorFlow dependencies
+## Install TensorFlow dependencies <a name="install-tf-dependencies"></a>
 
-#### Install necessary packages:
+#### Install necessary packages: <a name="install-necessary-packages"></a>
    - numpy, which is a numerical processing package that TensorFlow requires.
    - dev, which enables adding extensions to Python.
    - pip, which enables you to install and manage certain Python packages.
@@ -66,7 +66,7 @@ To install these packages for Python 3.n, execute the following command:
      sudo apt-get install python3-numpy python3-dev python3-pip python3-wheel
 ```
 
-#### Install mock package:
+#### Install mock package: <a name="install-mock-packages"></a>
 ```sh
    pip install -U mock
 ```
