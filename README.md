@@ -43,10 +43,16 @@ sudo apt-get upgrade bazel
    - dev, which enables adding extensions to Python.
    - pip, which enables you to install and manage certain Python packages.
    - wheel, which enables you to manage Python compressed packages in the wheel (.whl) format.
-   - To install these packages for Python 2.7, issue the following command:
-     - $ sudo apt-get install python-numpy python-dev python-pip python-wheel
-   - To install these packages for Python 3.n, issue the following command:
-     - $ sudo apt-get install python3-numpy python3-dev python3-pip python3-wheel
+To install these packages for Python 2.7, issue the following command:
+```sh
+     sudo apt-get install python-numpy python-dev python-pip python-wheel
+```
+To install these packages for Python 3.n, issue the following command:
+```sh
+     sudo apt-get install python3-numpy python3-dev python3-pip python3-wheel
+```
 
 2. Installing mock package:
-   - pip install -U mock
+```sh
+   pip install -U mock
+```
