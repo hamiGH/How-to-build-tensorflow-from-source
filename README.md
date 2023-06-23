@@ -22,8 +22,10 @@ $ sudo apt-get install openjdk-8-jdk
 ```
 
 - Step 2: Add Bazel distribution URI as a package source
+```sh
   - $ echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
   - $ curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+```
 
 - Step 3: Install and update Bazel
   - $ sudo apt-get update
