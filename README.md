@@ -32,11 +32,10 @@ curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install bazel
 ```
-
-    once installed, you can upgrade to a newer version of Bazel with the following command:
-    ```sh
-    sudo apt-get upgrade bazel
-    ```
+once installed, you can upgrade to a newer version of Bazel with the following command:
+```sh
+sudo apt-get upgrade bazel
+```
 
 ## Install TensorFlow dependencies
 1. To install TensorFlow, you must install the following packages:
