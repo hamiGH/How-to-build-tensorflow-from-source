@@ -1,5 +1,21 @@
 # How to build tensorflow from source
 
+Building TensorFlow from source provides several benefits:
+
+1. **Customization**: Building from source allows you to customize TensorFlow's build configuration based on your specific needs. You can enable or disable specific features, optimize for your hardware architecture, and fine-tune various compilation options.
+
+2. **Performance Optimization**: By building TensorFlow from source, you can optimize it for your target hardware and take advantage of hardware-specific optimizations, such as utilizing CPU instructions, enabling GPU support, or leveraging specialized libraries like Intel MKL or NVIDIA CUDA.
+
+3. **Bleeding-Edge Features**: Building from source gives you access to the latest features, improvements, and bug fixes before they are officially released in precompiled distributions. This is particularly useful if you want to experiment with cutting-edge functionality or contribute to the TensorFlow project.
+
+4. **Debugging and Profiling**: Building from source enables you to compile TensorFlow with debugging symbols, allowing for more effective troubleshooting and debugging of your TensorFlow applications. Additionally, you can enable profiling options to gather detailed performance metrics and analyze the behavior of your models.
+
+5. **Platform Compatibility**: Building TensorFlow from source provides compatibility across different operating systems and platforms. You can build TensorFlow on Linux, macOS, or Windows, ensuring support for your preferred development environment.
+
+6. **Learning and Understanding**: Building TensorFlow from source offers a valuable learning experience, as it allows you to explore the internal components and dependencies of the TensorFlow framework. It deepens your understanding of the library and its underlying mechanisms, enabling you to better utilize its capabilities.
+
+Overall, building TensorFlow from source grants you greater flexibility, performance optimization opportunities, access to cutting-edge features, and a deeper understanding of the framework. It empowers you to tailor TensorFlow to your specific needs and maximize its potential for your machine learning projects.
+
 ## Table of Contents
 - [Setup information](#setup-information)
 - [Install Bazel](#install-bazel)
