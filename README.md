@@ -160,6 +160,6 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
 
 #### Test the CUDA Toolkit and cuDNN installation
 - Check some version numbers
-    ◦ `$ nvcc –version`
-    ◦ `$ nvidia-smi`
-    ◦ `$ nvidia-smi -l  1`	
+    - `$ nvcc –version`
+    - `$ nvidia-smi`
+    - `$ nvidia-smi -l  1`
