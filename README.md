@@ -4,12 +4,19 @@
 - [Setup information](#setup-information)
 - [Install Bazel](#install-bazel)
 - [Install TensorFlow dependencies](#install-tf-dependencies)
-  - [Install necessary packages](#install-necessary-packages)
-  - [Install mock packages](#install-mock-packages)
-- [Contributing](#contributing)
-- [License](#license)
-
-
+    - [Install necessary packages](#install-necessary-packages)
+    - [Install mock packages](#install-mock-packages)
+    - [Install CUDA Toolkit by Runfile](#Install-cuda-toolkit)
+    - [Install CUDA driver](#Install-cuda-driver)i
+    - [Install cuDNN SDK](#nstall-cudnn-sdk)
+    - [Configure Cuda](#configure-cuda)
+    - [Test CUDA Toolkit and cuDNN](#test-cuda-cudnn)
+    - [Install additional Nvidia libraries (NCCL)](#install-additional-libs)
+- [Switch to gcc 4.9](#switch-gcc)
+- [Clone the TensorFlow repository](#clone-repo)
+- [Configure the installation](#config)
+- [Build the pip package](#build-wheel)
+- [Install the pip package](#install)
 
 ## Setup information <a name="setup-information"></a>
 - OS Platform and Distribution (e.g., Linux Ubuntu 16.04): Ubuntu 16.04
@@ -71,7 +78,7 @@ To install these packages for Python 3.n, execute the following command:
    pip install -U mock
 ```
 
-#### Installing CUDA Toolkit by Runfile
+#### Install CUDA Toolkit by Runfile <a name="install-cuda-toolkit"></a>
 Link: [installing cuda toolkit & problem-installing-nvidia-390-42-driver-on-ubuntu-16-04](https://developer.nvidia.com/cuda-zone)
 
 - Download runfile cuda toolkit:
@@ -114,7 +121,7 @@ Link: [installing cuda toolkit & problem-installing-nvidia-390-42-driver-on-ubun
     ```
   - Go to the next step for installing the CUDA driver.
 
-#### Installing CUDA driver:
+#### Install CUDA driver: <a name="install-cuda-driver"></a>
 - Online installing:
   - Run the following commands:
     ```
@@ -124,7 +131,7 @@ Link: [installing cuda toolkit & problem-installing-nvidia-390-42-driver-on-ubun
     $ reboot
     ```
 
-#### Installing cuDNN SDK (from a tar file)
+#### Install cuDNN SDK (from a tar file) <a name="install-cudnn-sdk"></a>
 Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
 
 - Download cuDNN tar file: [https://developer.nvidia.com/cudnn](https://developer.nvidia.com/cudnn)
@@ -153,7 +160,7 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
     $ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
     ```
 
-#### Configure CUDA
+#### Configure CUDA  <a name="configure-cuda"></a>
 - Add the CUDA Toolkit to $PATH
     - Open `~/.bashrc` in your favorite editor
         - `$ gedit ~/.bashrc`
@@ -169,13 +176,13 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
 - Configure and edit /etc/environments
     - It is also recommended for Ubuntu users to append string `/usr/local/cuda/bin` to the system file `/etc/environments` so that nvcc will be included in `$PATH`. This will take effect after reboot. To do that, you just have to `sudo gedit /etc/environments` and then add `:/usr/local/cuda/bin` (including the ":") at the end of the `PATH="/blah:/blah/blah"` string (inside the quotes).
 
-#### Test the CUDA Toolkit and cuDNN installation
+#### Test CUDA Toolkit and cuDNN  <a name="test-cuda-cudnn"></a>
 - Check some version numbers
     - `$ nvcc –version`
     - `$ nvidia-smi`
     - `$ nvidia-smi -l  1`
 
-#### Install additional Nvidia libraries (NCCL)
+#### Install additional Nvidia libraries (NCCL) <a name="install-additional-libs"></a>
 The NVIDIA Collective Communications Library (NCCL) implements multi-GPU and multi-node collective communication primitives that are performance optimized for NVIDIA GPUs. NCCL provides routines such as all-gather, all-reduce, broadcast, reduce, reduce-scatter, that are optimized to achieve high bandwidth over PCIe and NVLink high-speed interconnect.
 
 - Download NCCL package from NVIDIA website
@@ -206,7 +213,7 @@ The NVIDIA Collective Communications Library (NCCL) implements multi-GPU and mul
     $ source ~/.bashrc
     ```
 
-## Switch to gcc 4.9
+## Switch to gcc 4.9 <a name="switch-gcc"></a>
 Link: [how to switch gcc version using update-alternatives](https://example.com)
 
 Multiple versions of GCC can be installed and used on Ubuntu. The `update-alternatives` tool makes it easy to switch between multiple versions of GCC.
@@ -235,7 +242,7 @@ Now you can switch between gcc versions by using:
     $ sudo update-alternatives --config gcc
     ```
 
-## Clone the TensorFlow repository
+## Clone the TensorFlow repository <a name="clone-repo"></a>
 
 - To clone the latest TensorFlow repository, issue the following command:
     ```
@@ -247,7 +254,7 @@ Now you can switch between gcc versions by using:
     ◦ For example, to work with the r1.8
     ◦ `$ git checkout r1.8`
 
-## Configure the installation
+## Configure the installation <a name="config"></a>
 - Run `$ ./configure`
 - Use the exact responses as shown below in Bold:
     ```
@@ -333,7 +340,7 @@ Now you can switch between gcc versions by using:
     Configuration finished
     ```
 
-## Build the pip package
+## Build the pip package <a name="build-wheel"></a>
 To build a pip package for TensorFlow with GPU support, invoke the following command:
 
     $ bazel build  --config=opt  --config=cuda //tensorflow/tools/pip_package:build_pip_package
@@ -346,7 +353,7 @@ The bazel build command builds a script named build_pip_package. Running this sc
 
     $ bazel-bin/tensorflow/tools/pip_package/build_pip_package   /tmp/tensorflow_pkg
 
-## Install the pip package
+## Install the pip package <a name="install"/>
 Invoke pip install to install that pip package. The filename of the wheel file depends on your platform. For example, the following command will install the pip package
 for TensorFlow 1.8.0 on Linux:
 
