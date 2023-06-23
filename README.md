@@ -17,7 +17,9 @@ Find bazel version according to tensorflow version → [link for bazel version](
 Link → Using Bazel custom APT repository
 
 - Step 1: Install the JDK(8)
-  - $ sudo apt-get install openjdk-8-jdk
+```sh
+$ sudo apt-get install openjdk-8-jdk
+```
 
 - Step 2: Add Bazel distribution URI as a package source
   - $ echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
