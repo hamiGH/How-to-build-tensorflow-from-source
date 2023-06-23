@@ -326,11 +326,17 @@ Now you can switch between gcc versions by using:
 To build a pip package for TensorFlow with GPU support, invoke the following command:
 
     $ bazel build  --config=opt  --config=cuda //tensorflow/tools/pip_package:build_pip_package
-    
+
 or
+
     $ bazel build  --config=opt  --config=cuda //tensorflow/tools/pip_package:build_pip_package --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}" --config=monolithic --verbose_failures
+
 The bazel build command builds a script named build_pip_package. Running this script as follows will build a .whl file within the /tmp/tensorflow_pkg directory:
+
     $ bazel-bin/tensorflow/tools/pip_package/build_pip_package   /tmp/tensorflow_pkg
 
+## Install the pip package
+Invoke pip install to install that pip package. The filename of the .whl file depends on your platform. For example, the following command will install the pip package
+for TensorFlow 1.8.0 on Linux:
 
-
+    $ pip install /tmp/tensorflow_pkg/tensorflow....whl
