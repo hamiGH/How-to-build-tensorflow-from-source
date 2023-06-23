@@ -154,3 +154,6 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
         ```
     - Reload the ~/.bashrc file:
         - `$ source ~/.bashrc`
+
+- Configure and edit /etc/environments
+    - It is also recommended for Ubuntu users to append string `/usr/local/cuda/bin` to the system file `/etc/environments` so that nvcc will be included in `$PATH`. This will take effect after reboot. To do that, you just have to `sudo gedit /etc/environments` and then add `:/usr/local/cuda/bin` (including the ":") at the end of the `PATH="/blah:/blah/blah"` string (inside the quotes).
