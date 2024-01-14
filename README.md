@@ -179,7 +179,7 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
 #### Configure CUDA  <a name="configure-cuda"></a>
 - Add the CUDA Toolkit to $PATH
     - Open `~/.bashrc` in your favorite editor
-        - `$ gedit ~/.bashrc`
+        - `$ sudo nano ~/.bashrc`
     - Add these three export statements to the end of `~/.bashrc`
         ```
         export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
@@ -190,7 +190,7 @@ Link: [Installing cuDNN on Linux](https://developer.nvidia.com/cudnn)
         - `$ source ~/.bashrc`
 
 - Configure and edit /etc/environments
-    - It is also recommended for Ubuntu users to append string `/usr/local/cuda/bin` to the system file `/etc/environments` so that nvcc will be included in `$PATH`. This will take effect after reboot. To do that, you just have to `sudo gedit /etc/environments` and then add `:/usr/local/cuda/bin` (including the ":") at the end of the `PATH="/blah:/blah/blah"` string (inside the quotes).
+    - It is also recommended for Ubuntu users to append string `/usr/local/cuda/bin` to the system file `/etc/environments` so that nvcc will be included in `$PATH`. This will take effect after reboot. To do that, you just have to `sudo nano /etc/environments` and then add `:/usr/local/cuda/bin` (including the ":") at the end of the `PATH="/blah:/blah/blah"` string (inside the quotes).
 
 #### Test CUDA Toolkit and cuDNN  <a name="test-cuda-cudnn"></a>
 - Check some version numbers
